@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.Objects;
 
 public class Team {
@@ -56,6 +57,7 @@ public class Team {
         Team team = (Team) o;
         return points == team.points && diffGoals == team.diffGoals;
     }
+
 
     @Override
     public int hashCode() {

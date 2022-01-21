@@ -1,18 +1,19 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
+import java.util.*;
 
 public class CreateChampionship {
     HashMap<Integer, Team> teams = new HashMap<>();
-    teams.put(1, new Team());
 
-    @Override
-    public String toString() {
-        return "CreateChampionship{" +
-                "teams=" + teams +
-                ", n=" + n +
-                '}';
+    public void addTeams() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please, enter a team name:");
+        int number = 1;
+        while (number <= 4) {
+            teams.put(number, new Team(scanner.nextLine()));
+            number += 1;
+        }
+
     }
+
 
     public String game(Team team1, Team team2) {
         Random random = new Random();
@@ -36,5 +37,36 @@ public class CreateChampionship {
             return (team1.getName() + " DRAW " + team2.getName() + " - " + goal1 + " : " + goal2);
 
         }
+    }
+    public void championship() {
+        System.out.println("Tour #1");
+        System.out.println(game(teams.get(1), teams.get(2)));
+        System.out.println(game(teams.get(3), teams.get(4)));
+        System.out.println("Tour #2");
+        System.out.println(game(teams.get(4), teams.get(1)));
+        System.out.println(game(teams.get(2), teams.get(3)));
+        System.out.println("Tour #3");
+        System.out.println(game(teams.get(1), teams.get(3)));
+        System.out.println(game(teams.get(2), teams.get(4)));
+        System.out.println("Tour #4");
+        System.out.println(game(teams.get(3), teams.get(1)));
+        System.out.println(game(teams.get(4), teams.get(2)));
+        System.out.println("Tour #5");
+        System.out.println(game(teams.get(1), teams.get(4)));
+        System.out.println(game(teams.get(3), teams.get(2)));
+        System.out.println("Tour #6");
+        System.out.println(game(teams.get(2), teams.get(1)));
+        System.out.println(game(teams.get(4), teams.get(3)));
+    }
+
+    public void result(){
+        Set<Team> resultTable = new TreeSet<Team>((Collection<? extends Team>) teams);
+        System.out.println(resultTable);
+
+    }
+
+    @Override
+    public String toString() {
+        return "Off";
     }
 }
